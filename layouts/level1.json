@@ -1,0 +1,3492 @@
+{
+  "b": 209,
+  "disableInputWhenNotFocused": true,
+  "mangledName": "Level1",
+  "name": "Level1",
+  "r": 209,
+  "standardSortMethod": true,
+  "stopSoundsOnStartup": true,
+  "title": "Level 1",
+  "v": 209,
+  "uiSettings": {
+    "grid": false,
+    "gridType": "rectangular",
+    "gridWidth": 32,
+    "gridHeight": 32,
+    "gridOffsetX": 0,
+    "gridOffsetY": 0,
+    "gridColor": 10401023,
+    "gridAlpha": 0.8,
+    "snap": false,
+    "zoomFactor": 0.4481978045410356,
+    "windowMask": false
+  },
+  "objectsGroups": [
+    {
+      "name": "Button",
+      "objects": [
+        {
+          "name": "Tower1_Icon"
+        }
+      ]
+    },
+    {
+      "name": "Enemy",
+      "objects": [
+        {
+          "name": "ZombieBasic"
+        },
+        {
+          "name": "ZombieTough"
+        }
+      ]
+    },
+    {
+      "name": "Tiles",
+      "objects": [
+        {
+          "name": "TowerDefenseTileMap"
+        },
+        {
+          "name": "TowerHeadGun"
+        }
+      ]
+    },
+    {
+      "name": "TowersPlaced",
+      "objects": [
+        {
+          "name": "TowerHeadGun"
+        },
+        {
+          "name": "TowerHeadFlame"
+        }
+      ]
+    },
+    {
+      "name": "Projectile",
+      "objects": [
+        {
+          "name": "Bullet"
+        },
+        {
+          "name": "Flame"
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "WaveNumber",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "WaveEnemiesCount",
+      "type": "array",
+      "children": []
+    },
+    {
+      "folded": true,
+      "name": "WaveData",
+      "type": "structure",
+      "children": [
+        {
+          "name": "EnemiesCount",
+          "type": "array",
+          "children": [
+            {
+              "type": "number",
+              "value": 5
+            },
+            {
+              "type": "number",
+              "value": 8
+            },
+            {
+              "type": "number",
+              "value": 12
+            },
+            {
+              "type": "number",
+              "value": 16
+            },
+            {
+              "type": "number",
+              "value": 24
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CurrentSpawnCnt",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "EnemyTypeList",
+      "type": "array",
+      "children": [
+        {
+          "type": "string",
+          "value": "ZombieBasic"
+        },
+        {
+          "type": "string",
+          "value": "Zombie2"
+        }
+      ]
+    },
+    {
+      "name": "NextEnemyType",
+      "type": "string",
+      "value": "0"
+    },
+    {
+      "folded": true,
+      "name": "PathPositions",
+      "type": "structure",
+      "children": [
+        {
+          "name": "x",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "PathPositionX",
+      "type": "array",
+      "children": []
+    },
+    {
+      "name": "PathPositionY",
+      "type": "array",
+      "children": []
+    },
+    {
+      "name": "PathArray",
+      "type": "array",
+      "children": [
+        {
+          "type": "structure",
+          "children": [
+            {
+              "name": "PathPositions",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "ChildVariable",
+                  "type": "number",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PathPointsCount",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "instances": [
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1.0296010296010296,
+      "height": 800,
+      "keepRatio": true,
+      "layer": "",
+      "name": "TowerDefenseTileMap",
+      "persistentUuid": "82625a1d-c91c-47ee-98ca-c2c14c3ea8f6",
+      "width": 1412.6126126126128,
+      "x": -64,
+      "y": -32,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [
+        {
+          "name": "tilemap",
+          "value": "{\"tileWidth\":64,\"tileHeight\":64,\"dimX\":20,\"dimY\":12,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[70,70,70,70,70,70,71,24,24,24,24,24,24,24,24,24,24,24,24,24],[93,93,93,93,93,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[116,116,116,116,116,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,70,70,70,70,70,70,70,70,70,70,70,70,24],[24,24,24,24,92,93,93,93,93,93,93,93,93,93,93,93,93,93,93,24],[24,24,24,24,115,116,116,116,116,116,116,116,116,116,116,116,116,116,116,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24]]}]}"
+        }
+      ],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "GoldText",
+      "persistentUuid": "e19b01d7-23aa-4ef9-be22-d9dc27c83f93",
+      "width": 0,
+      "x": 989,
+      "y": 2,
+      "zOrder": 2,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "NextWaveButton",
+      "persistentUuid": "cee63a20-72b5-4cce-b11c-fa0b7063e286",
+      "width": 0,
+      "x": 915,
+      "y": 609,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "SpawnMarker",
+      "persistentUuid": "8e4a993f-fd90-42f6-96bf-bb1dc2f177a2",
+      "width": 0,
+      "x": -42,
+      "y": 52,
+      "zOrder": 4,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "8be7fd27-2ace-471e-ba43-414c21fe8aad",
+      "width": 0,
+      "x": 312,
+      "y": 55,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "f06ffdde-d772-4746-9d46-1f4712e8733e",
+      "width": 0,
+      "x": 317,
+      "y": 383,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "7f0861f0-3ec0-477e-a7a4-787e9a538291",
+      "width": 0,
+      "x": 1168,
+      "y": 374,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "WaveText",
+      "persistentUuid": "00d9c742-e556-4db2-84be-e232578101b1",
+      "width": 0,
+      "x": 975,
+      "y": 55,
+      "zOrder": 10,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "SpawnTimerText",
+      "persistentUuid": "0232619c-67c7-4ffa-a6fa-cb5cc7114e09",
+      "width": 0,
+      "x": 23,
+      "y": 660,
+      "zOrder": 11,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "SpawnCountText",
+      "persistentUuid": "ed37d97d-c2f6-4acf-9f66-ee38debaa508",
+      "width": 0,
+      "x": 26,
+      "y": 606,
+      "zOrder": 12,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "DebugText",
+      "persistentUuid": "92241bb0-039b-420a-be84-750d7a917fb5",
+      "width": 0,
+      "x": 518,
+      "y": 637,
+      "zOrder": 13,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "Tower1_Icon",
+      "persistentUuid": "4412bdf4-838d-4b76-a15b-b108bcb4698b",
+      "width": 0,
+      "x": 1186,
+      "y": 35,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "Indicator",
+      "persistentUuid": "aa399c7a-7835-40dd-b28e-e36d23a15611",
+      "width": 0,
+      "x": 1353,
+      "y": 249,
+      "zOrder": 15,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "Base",
+      "persistentUuid": "9f731fab-a30b-48f8-b2b1-1f79d1ab1055",
+      "width": 0,
+      "x": 1211,
+      "y": 392,
+      "zOrder": 16,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "Range",
+      "persistentUuid": "66262c13-5230-4a3b-93e7-b7ff4828617e",
+      "width": 0,
+      "x": 1335,
+      "y": 156,
+      "zOrder": 17,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "Tower2_Icon",
+      "persistentUuid": "61181073-c65d-4980-89d7-94b29aece38b",
+      "width": 0,
+      "x": 1188,
+      "y": 108,
+      "zOrder": 18,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 66,
+      "height": 63,
+      "keepRatio": true,
+      "layer": "",
+      "name": "Base_Health",
+      "persistentUuid": "2430eea2-c1f4-4aed-9b72-16a3d9618d19",
+      "width": 282,
+      "x": 648,
+      "y": 55,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "BaseBarText",
+      "persistentUuid": "dcc948d8-a4ba-46dc-becc-1a956af25761",
+      "width": 0,
+      "x": 677,
+      "y": 1,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    }
+  ],
+  "objects": [
+    {
+      "assetStoreId": "",
+      "name": "TowerDefenseTileMap",
+      "type": "TileMap::SimpleTileMap",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "atlasImage": "assets\\towerDefense_tilesheet.png",
+        "rowCount": 13,
+        "columnCount": 23,
+        "tileSize": 64,
+        "tilesWithHitBox": "93,249,296,297,277,278,279,280,281,287,288,289,290,291,292,46"
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieBasic",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 5,
+          "CurrentHealth": 0,
+          "MaxHealth": 5,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy1.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "GoldText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Gold: 0",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Gold: 0",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "assetStoreId": "b44dba91245ff1ac84a7b450e078194f19321d135fd8a67cd19bc9cb3403fba5",
+      "name": "NextWaveButton",
+      "type": "PanelSpriteButton::PanelSpriteButton",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "LeftPadding": 16,
+        "RightPadding": 16,
+        "PressedLabelOffsetY": 10,
+        "BottomPadding": 32,
+        "TopPadding": 16,
+        "HoveredFadeOutDuration": 0.25
+      },
+      "childrenContent": {
+        "Hovered": {
+          "bottomMargin": 32,
+          "height": 106,
+          "leftMargin": 16,
+          "rightMargin": 16,
+          "texture": "Green Button_Hovered.png",
+          "tiled": false,
+          "topMargin": 16,
+          "width": 256
+        },
+        "Idle": {
+          "bottomMargin": 32,
+          "height": 106,
+          "leftMargin": 16,
+          "rightMargin": 16,
+          "texture": "Green Button_Idle.png",
+          "tiled": false,
+          "topMargin": 16,
+          "width": 256
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "Release the Zombies",
+          "font": "",
+          "textAlignment": "center",
+          "characterSize": 32,
+          "color": {
+            "b": 29,
+            "g": 99,
+            "r": 62
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "Release the Zombies",
+            "font": "",
+            "textAlignment": "center",
+            "verticalTextAlignment": "top",
+            "characterSize": 32,
+            "color": "62;99;29"
+          }
+        },
+        "Pressed": {
+          "bottomMargin": 16,
+          "height": 106,
+          "leftMargin": 16,
+          "rightMargin": 16,
+          "texture": "Green Button_Pressed.png",
+          "tiled": false,
+          "topMargin": 32,
+          "width": 256
+        }
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "SpawnMarker",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "SpawnPointNumber",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "NewSprite",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "NewSprite2",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 11,
+                        "y": 10
+                      },
+                      {
+                        "x": 20,
+                        "y": 10
+                      },
+                      {
+                        "x": 20,
+                        "y": 19
+                      },
+                      {
+                        "x": 11,
+                        "y": 19
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "PathMarker",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "NewSprite",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "NewSprite2",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 11,
+                        "y": 10
+                      },
+                      {
+                        "x": 20,
+                        "y": 10
+                      },
+                      {
+                        "x": 20,
+                        "y": 19
+                      },
+                      {
+                        "x": 11,
+                        "y": 19
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "WaveText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Wave: 0",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Wave: 0",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "SpawnTimerText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Spawn Timer: 0",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Spawn Timer: 0",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "SpawnCountText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Spawn Count: 0",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Spawn Count: 0",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "DebugText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Debug",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Debug",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerHeadGun",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Cost",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 300
+        },
+        {
+          "name": "ProjectileSpeed",
+          "type": "number",
+          "value": 500
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FireBullet",
+          "type": "FireBullet::FireBullet",
+          "FireCooldown": 0.5,
+          "HasJustFired": false,
+          "RotateBullet": true,
+          "FiringArc": 45,
+          "BulletQuantity": 1,
+          "AngleVariance": 0,
+          "BulletSpeedVariance": 0,
+          "AmmoQuantity": 0,
+          "ShotsPerReload": 0,
+          "ReloadDuration": 1,
+          "MaxAmmo": 0,
+          "ShotsBeforeNextReload": 0,
+          "TotalShotsFired": 0,
+          "TotalBulletsCreated": 0,
+          "StartingAmmo": 0,
+          "TotalReloadsCompleted": 0,
+          "UnlimitedAmmo": true,
+          "ReloadInProgress": false,
+          "HeatIncreasePerShot": 0,
+          "HeatLevel": 0,
+          "AutomaticReloading": true,
+          "OverheatDuration": 0,
+          "LinearCoolingRate": 0.1,
+          "ExponentialCoolingRate": 0.3,
+          "BulletLayer": "",
+          "RandomizedAngle": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\TowerHead1",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\TowerHead1.png",
+                  "points": [
+                    {
+                      "name": "BulletPoint",
+                      "x": 59,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 11
+                      },
+                      {
+                        "x": 59,
+                        "y": 11
+                      },
+                      {
+                        "x": 59,
+                        "y": 53
+                      },
+                      {
+                        "x": 4,
+                        "y": 53
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerBase",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\TowerBase.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "NewSprite",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": []
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Indicator",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "TowerGun",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Tower1Icon.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TowerFlame",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\assets_Tower2Icon.png.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "Tower1_Icon",
+      "type": "PanelSpriteButton::PanelSpriteButton",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Black",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "0;0;5"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Outline",
+          "name": "White",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "255;255;255"
+          },
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [],
+      "content": {},
+      "childrenContent": {
+        "Hovered": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower1Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Idle": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower1Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "",
+          "font": "",
+          "textAlignment": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "",
+            "font": "",
+            "textAlignment": "",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "color": "0;0;0"
+          }
+        },
+        "Pressed": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower1Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        }
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieTough",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 5,
+          "CurrentHealth": 0,
+          "MaxHealth": 5,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy2.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Base",
+      "preScale": 2,
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Base.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Bullet",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 500
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullet.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 24,
+                        "y": 24
+                      },
+                      {
+                        "x": 40,
+                        "y": 24
+                      },
+                      {
+                        "x": 40,
+                        "y": 40
+                      },
+                      {
+                        "x": 24,
+                        "y": 40
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "Range",
+      "type": "PrimitiveDrawing::Drawer",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "fillOpacity": 50,
+      "outlineSize": 1,
+      "outlineOpacity": 50,
+      "absoluteCoordinates": true,
+      "clearBetweenFrames": true,
+      "antialiasing": "none",
+      "fillColor": {
+        "r": 212,
+        "g": 108,
+        "b": 108
+      },
+      "outlineColor": {
+        "r": 162,
+        "g": 15,
+        "b": 15
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerHeadFlame",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Cost",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 150
+        },
+        {
+          "name": "ProjectileSpeed",
+          "type": "number",
+          "value": 300
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FireBullet",
+          "type": "FireBullet::FireBullet",
+          "FireCooldown": 0.1,
+          "HasJustFired": false,
+          "RotateBullet": true,
+          "FiringArc": 45,
+          "BulletQuantity": 1,
+          "AngleVariance": 0,
+          "BulletSpeedVariance": 0,
+          "AmmoQuantity": 0,
+          "ShotsPerReload": 0,
+          "ReloadDuration": 1,
+          "MaxAmmo": 0,
+          "ShotsBeforeNextReload": 0,
+          "TotalShotsFired": 0,
+          "TotalBulletsCreated": 0,
+          "StartingAmmo": 0,
+          "TotalReloadsCompleted": 0,
+          "UnlimitedAmmo": true,
+          "ReloadInProgress": false,
+          "HeatIncreasePerShot": 0,
+          "HeatLevel": 0,
+          "AutomaticReloading": true,
+          "OverheatDuration": 0,
+          "LinearCoolingRate": 0.1,
+          "ExponentialCoolingRate": 0.3,
+          "BulletLayer": "",
+          "RandomizedAngle": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\TowerHead2",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\TowerHead2",
+                  "points": [
+                    {
+                      "name": "BulletPoint",
+                      "x": 59,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 11
+                      },
+                      {
+                        "x": 59,
+                        "y": 11
+                      },
+                      {
+                        "x": 59,
+                        "y": 53
+                      },
+                      {
+                        "x": 4,
+                        "y": 53
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "Tower2_Icon",
+      "type": "PanelSpriteButton::PanelSpriteButton",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Black",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "0;0;5"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Outline",
+          "name": "White",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "255;255;255"
+          },
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [],
+      "content": {},
+      "childrenContent": {
+        "Hovered": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower2Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Idle": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower2Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "",
+          "font": "",
+          "textAlignment": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "",
+            "font": "",
+            "textAlignment": "",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "color": "0;0;0"
+          }
+        },
+        "Pressed": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower2Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        }
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Flame",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 250
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "assets\\Flame",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Flame.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 14,
+                        "y": 26
+                      },
+                      {
+                        "x": 51,
+                        "y": 26
+                      },
+                      {
+                        "x": 51,
+                        "y": 38
+                      },
+                      {
+                        "x": 14,
+                        "y": 38
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "ebc9bc64e9525d8e827938e246f37b4398590f18a3444735dc50edbea0317f03",
+      "name": "Base_Health",
+      "type": "PanelSpriteContinuousBar::PanelSpriteContinuousBar",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "InitialValue": 10,
+        "MaxValue": 10,
+        "BarTopPadding": 8,
+        "BarRightPadding": 10,
+        "BarBottomPadding": 8,
+        "BarLeftPadding": 10,
+        "PreviousHighValueDuration": 0
+      },
+      "childrenContent": {
+        "Background": {
+          "bottomMargin": 8,
+          "height": 35,
+          "leftMargin": 10,
+          "rightMargin": 10,
+          "texture": "Wood Bar Border.png",
+          "tiled": true,
+          "topMargin": 8,
+          "width": 397
+        },
+        "Buffer": {
+          "bottomMargin": 0,
+          "height": 32,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "Shaded Blue Fill Bar.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 32
+        },
+        "FillBar": {
+          "bottomMargin": 9,
+          "height": 19,
+          "leftMargin": 6,
+          "rightMargin": 6,
+          "texture": "Shaded Blue Fill Bar.png",
+          "tiled": false,
+          "topMargin": 9,
+          "width": 19
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "8 / 16",
+          "font": "",
+          "textAlignment": "center",
+          "characterSize": 16,
+          "color": {
+            "b": 255,
+            "g": 255,
+            "r": 255
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": true,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "8 / 16",
+            "font": "",
+            "textAlignment": "center",
+            "verticalTextAlignment": "top",
+            "characterSize": 16,
+            "color": "255;255;255"
+          }
+        }
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "BaseBarText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Base Health",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 254,
+        "g": 19,
+        "r": 144
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Base Health",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "144;19;254"
+      }
+    }
+  ],
+  "objectsFolderStructure": {
+    "folderName": "__ROOT",
+    "children": [
+      {
+        "objectName": "TowerDefenseTileMap"
+      },
+      {
+        "objectName": "Tower1_Icon"
+      },
+      {
+        "objectName": "Tower2_Icon"
+      },
+      {
+        "objectName": "TowerHeadGun"
+      },
+      {
+        "objectName": "TowerHeadFlame"
+      },
+      {
+        "objectName": "Indicator"
+      },
+      {
+        "objectName": "Range"
+      },
+      {
+        "objectName": "TowerBase"
+      },
+      {
+        "objectName": "Base"
+      },
+      {
+        "objectName": "NewSprite"
+      },
+      {
+        "objectName": "ZombieBasic"
+      },
+      {
+        "objectName": "Base_Health"
+      },
+      {
+        "objectName": "ZombieTough"
+      },
+      {
+        "objectName": "GoldText"
+      },
+      {
+        "objectName": "NextWaveButton"
+      },
+      {
+        "objectName": "SpawnMarker"
+      },
+      {
+        "objectName": "PathMarker"
+      },
+      {
+        "objectName": "WaveText"
+      },
+      {
+        "objectName": "SpawnTimerText"
+      },
+      {
+        "objectName": "SpawnCountText"
+      },
+      {
+        "objectName": "DebugText"
+      },
+      {
+        "objectName": "BaseBarText"
+      },
+      {
+        "objectName": "Bullet"
+      },
+      {
+        "objectName": "Flame"
+      }
+    ]
+  },
+  "events": [
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Text Display\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "GoldText",
+            "Text",
+            "=",
+            "\"Gold: \" + Gold"
+          ]
+        },
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "WaveText",
+            "Text",
+            "=",
+            "\"Wave: \" + WaveNumber"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BooleanVariable"
+          },
+          "parameters": [
+            "Debug",
+            "True",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "SpawnTimerText",
+            "Text",
+            "=",
+            "\"Spawn Time: \" + ToString(floor(TimerElapsedTime(\"SpawnTimer\")))"
+          ]
+        },
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "SpawnCountText",
+            "Text",
+            "=",
+            "\"Spawn Count: \" + CurrentSpawnCnt"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Initialize"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "DepartScene"
+          },
+          "parameters": [
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "Cache"
+          },
+          "parameters": [
+            "PathMarker"
+          ]
+        },
+        {
+          "type": {
+            "value": "ResetTimer"
+          },
+          "parameters": [
+            "",
+            "\"SpawnTimer\""
+          ]
+        },
+        {
+          "type": {
+            "value": "Cache"
+          },
+          "parameters": [
+            "Indicator"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetStringVariable"
+          },
+          "parameters": [
+            "NextEnemyType",
+            "=",
+            "\"ZombieTough\""
+          ]
+        },
+        {
+          "type": {
+            "value": "OpacityCapability::OpacityBehavior::SetValue"
+          },
+          "parameters": [
+            "Indicator",
+            "Opacity",
+            "=",
+            "200"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "Gold",
+            "=",
+            "50"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Wave Start"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+          },
+          "parameters": [
+            "NextWaveButton",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "WaveNumber",
+            "+",
+            "1"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CurrentSpawnCnt",
+            "=",
+            "WaveData.EnemiesCount[WaveNumber]"
+          ]
+        },
+        {
+          "type": {
+            "value": "ResetTimer"
+          },
+          "parameters": [
+            "",
+            "\"SpawnTimer\""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Enemy spawning"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "CompareTimer"
+          },
+          "parameters": [
+            "",
+            "\"SpawnTimer\"",
+            ">=",
+            "1"
+          ]
+        },
+        {
+          "type": {
+            "value": "NumberVariable"
+          },
+          "parameters": [
+            "CurrentSpawnCnt",
+            ">=",
+            "1"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "ResetTimer"
+          },
+          "parameters": [
+            "",
+            "\"SpawnTimer\""
+          ]
+        },
+        {
+          "type": {
+            "value": "CreateByName"
+          },
+          "parameters": [
+            "",
+            "Enemy",
+            "NextEnemyType",
+            "SpawnMarker.X()",
+            "SpawnMarker.Y()",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CurrentSpawnCnt",
+            "-",
+            "1"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Enemy Path"
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "PathMarker",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "PushNumberToObjectVariable"
+              },
+              "parameters": [
+                "Enemy",
+                "TargetX",
+                "PathMarker.X()"
+              ]
+            },
+            {
+              "type": {
+                "value": "PushNumberToObjectVariable"
+              },
+              "parameters": [
+                "Enemy",
+                "TargetY",
+                "PathMarker.Y()"
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "DebugText",
+                "Text",
+                "=",
+                "\"Pos: \" + PathPositionX[PathMarker.PathPointNumber]"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetStringVariable"
+          },
+          "parameters": [
+            "NextEnemyType",
+            "=",
+            "\"ZombieTough\""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Enemy movement"
+    },
+    {
+      "type": "BuiltinCommonInstructions::ForEach",
+      "object": "Enemy",
+      "conditions": [],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ObjectVariableChildCount"
+              },
+              "parameters": [
+                "Enemy",
+                "TargetX",
+                ">",
+                "0"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "Enemy",
+                "Tween",
+                "\"Move\"",
+                "Enemy.TargetX[0]",
+                "Enemy.TargetY[0]",
+                "\"linear\"",
+                "DistanceBetweenPositions(Enemy.X(), Enemy.Y(), Enemy.TargetX[0], Enemy.TargetY[0]) * 0.02",
+                "no"
+              ]
+            },
+            {
+              "type": {
+                "value": "RotateTowardPosition"
+              },
+              "parameters": [
+                "Enemy",
+                "Enemy.TargetX[0]",
+                "Enemy.TargetY[0]",
+                "360",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Tween::HasFinished"
+              },
+              "parameters": [
+                "Enemy",
+                "Tween",
+                "\"Move\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ObjectVariableRemoveAt"
+              },
+              "parameters": [
+                "Enemy",
+                "TargetX",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "ObjectVariableRemoveAt"
+              },
+              "parameters": [
+                "Enemy",
+                "TargetY",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "ObjectVariableChildCount"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    "TargetX",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Enemy",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PanelSpriteContinuousBar::PanelSpriteContinuousBar::SetValue"
+                  },
+                  "parameters": [
+                    "Base_Health",
+                    "-",
+                    "1",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Select Tower Icon"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "Visible"
+          },
+          "parameters": [
+            "Indicator"
+          ]
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+              },
+              "parameters": [
+                "Tower1_Icon",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Montre"
+              },
+              "parameters": [
+                "Indicator",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Indicator",
+                "Animation",
+                "=",
+                "\"TowerGun\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+              },
+              "parameters": [
+                "Tower2_Icon",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Montre"
+              },
+              "parameters": [
+                "Indicator",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Indicator",
+                "Animation",
+                "=",
+                "\"TowerFlame\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "PanelSpriteButton::PanelSpriteButton::IsHovered"
+          },
+          "parameters": [
+            "Button",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "EffectCapability::EffectBehavior::EnableEffect"
+          },
+          "parameters": [
+            "Button",
+            "Effect",
+            "\"Black\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "EffectCapability::EffectBehavior::EnableEffect"
+          },
+          "parameters": [
+            "Button",
+            "Effect",
+            "\"White\"",
+            "yes"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "PanelSpriteButton::PanelSpriteButton::IsHovered"
+          },
+          "parameters": [
+            "Button",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "EffectCapability::EffectBehavior::EnableEffect"
+          },
+          "parameters": [
+            "Button",
+            "Effect",
+            "\"White\"",
+            "no"
+          ]
+        },
+        {
+          "type": {
+            "value": "EffectCapability::EffectBehavior::EnableEffect"
+          },
+          "parameters": [
+            "Button",
+            "Effect",
+            "\"Black\"",
+            "yes"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "MettreXY"
+          },
+          "parameters": [
+            "Indicator",
+            "=",
+            "CursorX()",
+            "=",
+            "CursorY()"
+          ]
+        },
+        {
+          "type": {
+            "value": "SnapToGrid::SnapObjectToVirtualGrid"
+          },
+          "parameters": [
+            "",
+            "Indicator",
+            "32",
+            "32",
+            "0",
+            "0",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "Visible"
+          },
+          "parameters": [
+            "Indicator"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "PrimitiveDrawing::Circle"
+          },
+          "parameters": [
+            "Range",
+            "Indicator.X()",
+            "Indicator.Y()",
+            "TowersPlaced.Range"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Adding Towers\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "MouseButtonFromTextReleased"
+          },
+          "parameters": [
+            "",
+            "\"Left\""
+          ]
+        },
+        {
+          "type": {
+            "inverted": true,
+            "value": "CollisionNP"
+          },
+          "parameters": [
+            "Indicator",
+            "Tiles",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "Visible"
+          },
+          "parameters": [
+            "Indicator"
+          ]
+        },
+        {
+          "type": {
+            "inverted": true,
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "NextWaveButton",
+            "=",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::Name"
+              },
+              "parameters": [
+                "Indicator",
+                "Animation",
+                "=",
+                "\"TowerGun\""
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "Gold",
+                ">=",
+                "TowerHeadGun.Cost"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "Gold",
+                "-",
+                "TowerHeadGun.Cost"
+              ]
+            },
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "TowerBase",
+                "Indicator.X()",
+                "Indicator.Y()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "TowerHeadGun",
+                "Indicator.X()",
+                "Indicator.Y()",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::Name"
+              },
+              "parameters": [
+                "Indicator",
+                "Animation",
+                "=",
+                "\"TowerFlame\""
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "Gold",
+                ">=",
+                "TowerHeadFlame.Cost"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "Gold",
+                "-",
+                "TowerHeadFlame.Cost"
+              ]
+            },
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "TowerBase",
+                "Indicator.X()",
+                "Indicator.Y()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "TowerHeadFlame",
+                "Indicator.X()",
+                "Indicator.Y()",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "MouseButtonFromTextReleased"
+          },
+          "parameters": [
+            "",
+            "\"Right\""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "Cache"
+          },
+          "parameters": [
+            "Indicator"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Tower targeting"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::ForEach",
+      "object": "TowersPlaced",
+      "conditions": [
+        {
+          "type": {
+            "value": "Distance"
+          },
+          "parameters": [
+            "TowersPlaced",
+            "Enemy",
+            "TowersPlaced.Range",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "RotateTowardPosition"
+          },
+          "parameters": [
+            "TowersPlaced",
+            "Enemy.X()",
+            "Enemy.Y()",
+            "0",
+            ""
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareStrings"
+              },
+              "parameters": [
+                "TowersPlaced.ObjectName()",
+                "=",
+                "\"TowerHeadGun\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "FireBullet::FireBullet::FireTowardPosition"
+              },
+              "parameters": [
+                "TowersPlaced",
+                "FireBullet",
+                "TowersPlaced.PointX(\"BulletPoint\")",
+                "TowersPlaced.PointY(\"BulletPoint\")",
+                "Bullet",
+                "Enemy.PointX(\"ShotPoint\")",
+                "Enemy.PointY(\"ShotPoint\")",
+                "TowersPlaced.ProjectileSpeed",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareStrings"
+              },
+              "parameters": [
+                "TowersPlaced.ObjectName()",
+                "=",
+                "\"TowerHeadFlame\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "FireBullet::FireBullet::FireTowardPosition"
+              },
+              "parameters": [
+                "TowersPlaced",
+                "FireBullet",
+                "TowersPlaced.PointX(\"BulletPoint\")",
+                "TowersPlaced.PointY(\"BulletPoint\")",
+                "Flame",
+                "Enemy.PointX(\"ShotPoint\")",
+                "Enemy.PointY(\"ShotPoint\")",
+                "TowersPlaced.ProjectileSpeed",
+                ""
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Projectiles strike enemies"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::ForEach",
+      "object": "Projectile",
+      "conditions": [
+        {
+          "type": {
+            "value": "CollisionPoint"
+          },
+          "parameters": [
+            "Enemy",
+            "Projectile.X()",
+            "Projectile.Y()"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "Delete"
+          },
+          "parameters": [
+            "Projectile",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "Health::Health::Hit"
+          },
+          "parameters": [
+            "Enemy",
+            "Health",
+            "1",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "events": [
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "Projectile",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [],
+          "parameters": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Health::Health::IsDead"
+              },
+              "parameters": [
+                "Enemy",
+                "Health",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Enemy",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "Gold",
+                "+",
+                "2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 0.1,
+      "cameraType": "perspective",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [
+        {
+          "defaultSize": true,
+          "defaultViewport": true,
+          "height": 0,
+          "viewportBottom": 1,
+          "viewportLeft": 0,
+          "viewportRight": 1,
+          "viewportTop": 0,
+          "width": 0
+        }
+      ],
+      "effects": []
+    }
+  ],
+  "behaviorsSharedData": [
+    {
+      "name": "Animation",
+      "type": "AnimatableCapability::AnimatableBehavior"
+    },
+    {
+      "name": "Effect",
+      "type": "EffectCapability::EffectBehavior"
+    },
+    {
+      "name": "FireBullet",
+      "type": "FireBullet::FireBullet"
+    },
+    {
+      "name": "Flippable",
+      "type": "FlippableCapability::FlippableBehavior"
+    },
+    {
+      "name": "Health",
+      "type": "Health::Health"
+    },
+    {
+      "name": "Opacity",
+      "type": "OpacityCapability::OpacityBehavior"
+    },
+    {
+      "name": "Resizable",
+      "type": "ResizableCapability::ResizableBehavior"
+    },
+    {
+      "name": "Scale",
+      "type": "ScalableCapability::ScalableBehavior"
+    },
+    {
+      "name": "Text",
+      "type": "TextContainerCapability::TextContainerBehavior"
+    },
+    {
+      "name": "Tween",
+      "type": "Tween::TweenBehavior"
+    }
+  ]
+}
