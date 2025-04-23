@@ -49,6 +49,9 @@
         },
         {
           "name": "TowerHeadGun"
+        },
+        {
+          "name": "TowerHeadFlame"
         }
       ]
     },
@@ -134,7 +137,7 @@
         },
         {
           "type": "string",
-          "value": "Zombie2"
+          "value": "ZombieTough"
         }
       ]
     },
@@ -142,6 +145,11 @@
       "name": "NextEnemyType",
       "type": "string",
       "value": "0"
+    },
+    {
+      "name": "NextEnemyNumber",
+      "type": "number",
+      "value": 0
     },
     {
       "folded": true,
@@ -171,6 +179,7 @@
       "children": []
     },
     {
+      "folded": true,
       "name": "PathArray",
       "type": "array",
       "children": [
@@ -216,7 +225,7 @@
       "stringProperties": [
         {
           "name": "tilemap",
-          "value": "{\"tileWidth\":64,\"tileHeight\":64,\"dimX\":20,\"dimY\":12,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[70,70,70,70,70,70,71,24,24,24,24,24,24,24,24,24,24,24,24,24],[93,93,93,93,93,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[116,116,116,116,116,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,70,70,70,70,70,70,70,70,70,70,70,70,24],[24,24,24,24,92,93,93,93,93,93,93,93,93,93,93,93,93,93,93,24],[24,24,24,24,115,116,116,116,116,116,116,116,116,116,116,116,116,116,116,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24]]}]}"
+          "value": "{\"tileWidth\":64,\"tileHeight\":64,\"dimX\":20,\"dimY\":12,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[70,70,70,70,70,70,71,24,24,24,24,24,24,24,24,24,24,24,24,24],[93,93,93,93,93,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[116,116,116,116,73,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,95,70,70,70,70,70,70,70,70,70,70,70,70,24],[24,24,24,24,92,93,93,93,93,93,93,93,93,93,93,93,93,93,93,24],[24,24,24,24,115,116,116,116,116,116,116,116,116,116,116,116,116,116,116,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24]]}]}"
         }
       ],
       "initialVariables": []
@@ -544,6 +553,11 @@
           "name": "TargetY",
           "type": "array",
           "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 2
         }
       ],
       "effects": [],
@@ -551,9 +565,9 @@
         {
           "name": "Health",
           "type": "Health::Health",
-          "Health": 5,
+          "Health": 12,
           "CurrentHealth": 0,
-          "MaxHealth": 5,
+          "MaxHealth": 12,
           "DamageCooldown": 0,
           "AllowOverHealing": false,
           "IsHealthJustDamaged": false,
@@ -1087,6 +1101,11 @@
           "name": "ProjectileSpeed",
           "type": "number",
           "value": 500
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 1
         }
       ],
       "effects": [],
@@ -1483,6 +1502,11 @@
           "name": "TargetY",
           "type": "array",
           "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 3
         }
       ],
       "effects": [],
@@ -1490,9 +1514,9 @@
         {
           "name": "Health",
           "type": "Health::Health",
-          "Health": 5,
+          "Health": 15,
           "CurrentHealth": 0,
-          "MaxHealth": 5,
+          "MaxHealth": 15,
           "DamageCooldown": 0,
           "AllowOverHealing": false,
           "IsHealthJustDamaged": false,
@@ -1513,7 +1537,7 @@
           "IsShieldJustDamaged": false,
           "ShieldDamageTaken": 2.0247e-320,
           "FlatDamageReduction": 0,
-          "PercentDamageReduction": 0
+          "PercentDamageReduction": 0.25
         },
         {
           "name": "Tween",
@@ -1749,6 +1773,11 @@
           "name": "ProjectileSpeed",
           "type": "number",
           "value": 300
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 0.5
         }
       ],
       "effects": [],
@@ -2176,10 +2205,10 @@
         "objectName": "ZombieBasic"
       },
       {
-        "objectName": "Base_Health"
+        "objectName": "ZombieTough"
       },
       {
-        "objectName": "ZombieTough"
+        "objectName": "Base_Health"
       },
       {
         "objectName": "GoldText"
@@ -2412,6 +2441,16 @@
             "NextWaveButton",
             ""
           ]
+        },
+        {
+          "type": {
+            "value": "NumberVariable"
+          },
+          "parameters": [
+            "CurrentSpawnCnt",
+            "=",
+            "0"
+          ]
         }
       ],
       "actions": [
@@ -2491,6 +2530,26 @@
           "parameters": [
             "",
             "\"SpawnTimer\""
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "NextEnemyNumber",
+            "=",
+            "RandomInRange(0, 1)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetStringVariable"
+          },
+          "parameters": [
+            "NextEnemyType",
+            "=",
+            "EnemyTypeList[NextEnemyNumber]"
           ]
         },
         {
@@ -2597,6 +2656,16 @@
         "textR": 0
       },
       "comment": "Enemy movement"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
     },
     {
       "type": "BuiltinCommonInstructions::ForEach",
@@ -2756,6 +2825,15 @@
           "parameters": [
             "Indicator"
           ]
+        },
+        {
+          "type": {
+            "value": "MouseButtonFromTextReleased"
+          },
+          "parameters": [
+            "",
+            "\"Left\""
+          ]
         }
       ],
       "actions": [],
@@ -2765,10 +2843,12 @@
           "conditions": [
             {
               "type": {
-                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+                "value": "SourisSurObjet"
               },
               "parameters": [
                 "Tower1_Icon",
+                "",
+                "",
                 ""
               ]
             }
@@ -2801,10 +2881,12 @@
           "conditions": [
             {
               "type": {
-                "value": "PanelSpriteButton::PanelSpriteButton::IsClicked"
+                "value": "SourisSurObjet"
               },
               "parameters": [
                 "Tower2_Icon",
+                "",
+                "",
                 ""
               ]
             }
@@ -3026,6 +3108,30 @@
           },
           "parameters": [
             "NextWaveButton",
+            "=",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "inverted": true,
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "Tower1_Icon",
+            "=",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "inverted": true,
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "Tower2_Icon",
             "=",
             "",
             ""
@@ -3359,7 +3465,7 @@
           "parameters": [
             "Enemy",
             "Health",
-            "1",
+            "TowersPlaced.Damage",
             "",
             "",
             ""
@@ -3409,7 +3515,7 @@
               "parameters": [
                 "Gold",
                 "+",
-                "2"
+                "Enemy.Gold"
               ]
             }
           ]
