@@ -38,6 +38,9 @@
         },
         {
           "name": "ZombieTough"
+        },
+        {
+          "name": "ZombieBoss"
         }
       ]
     },
@@ -138,6 +141,10 @@
         {
           "type": "string",
           "value": "ZombieTough"
+        },
+        {
+          "type": "string",
+          "value": "ZombieBoss"
         }
       ]
     },
@@ -382,22 +389,6 @@
       "x": 26,
       "y": 606,
       "zOrder": 12,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "",
-      "name": "DebugText",
-      "persistentUuid": "92241bb0-039b-420a-be84-750d7a917fb5",
-      "width": 0,
-      "x": 518,
-      "y": 637,
-      "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1039,48 +1030,6 @@
       }
     },
     {
-      "assetStoreId": "",
-      "bold": false,
-      "italic": false,
-      "name": "DebugText",
-      "smoothed": true,
-      "type": "TextObject::Text",
-      "underlined": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "string": "Debug",
-      "font": "",
-      "textAlignment": "right",
-      "characterSize": 40,
-      "color": {
-        "b": 255,
-        "g": 255,
-        "r": 255
-      },
-      "content": {
-        "bold": false,
-        "isOutlineEnabled": false,
-        "isShadowEnabled": false,
-        "italic": false,
-        "outlineColor": "255;255;255",
-        "outlineThickness": 2,
-        "shadowAngle": 90,
-        "shadowBlurRadius": 2,
-        "shadowColor": "0;0;0",
-        "shadowDistance": 4,
-        "shadowOpacity": 127,
-        "smoothed": true,
-        "underlined": false,
-        "text": "Debug",
-        "font": "",
-        "textAlignment": "right",
-        "verticalTextAlignment": "top",
-        "characterSize": 40,
-        "color": "255;255;255"
-      }
-    },
-    {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
       "name": "TowerHeadGun",
@@ -1514,9 +1463,9 @@
         {
           "name": "Health",
           "type": "Health::Health",
-          "Health": 15,
+          "Health": 20,
           "CurrentHealth": 0,
-          "MaxHealth": 15,
+          "MaxHealth": 20,
           "DamageCooldown": 0,
           "AllowOverHealing": false,
           "IsHealthJustDamaged": false,
@@ -2166,6 +2115,128 @@
         "characterSize": 40,
         "color": "144;19;254"
       }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieBoss",
+      "preScale": 1.5,
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 3
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 30,
+          "CurrentHealth": 0,
+          "MaxHealth": 30,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 2,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0.5,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 5,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0.25
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\Enemy3",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy4",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -2208,6 +2279,9 @@
         "objectName": "ZombieTough"
       },
       {
+        "objectName": "ZombieBoss"
+      },
+      {
         "objectName": "Base_Health"
       },
       {
@@ -2230,9 +2304,6 @@
       },
       {
         "objectName": "SpawnCountText"
-      },
-      {
-        "objectName": "DebugText"
       },
       {
         "objectName": "BaseBarText"
@@ -2539,7 +2610,7 @@
           "parameters": [
             "NextEnemyNumber",
             "=",
-            "RandomInRange(0, 1)"
+            "RandomInRange(0, 2)"
           ]
         },
         {
@@ -2612,17 +2683,6 @@
                 "Enemy",
                 "TargetY",
                 "PathMarker.Y()"
-              ]
-            },
-            {
-              "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-              },
-              "parameters": [
-                "DebugText",
-                "Text",
-                "=",
-                "\"Pos: \" + PathPositionX[PathMarker.PathPointNumber]"
               ]
             }
           ]
