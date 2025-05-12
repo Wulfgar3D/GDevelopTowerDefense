@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.4481978045410356,
+    "zoomFactor": 0.41943397827590606,
     "windowMask": false
   },
   "objectsGroups": [
@@ -26,7 +26,7 @@
       "name": "Button",
       "objects": [
         {
-          "name": "Tower1_Icon"
+          "name": "TowerGun_Icon"
         }
       ]
     },
@@ -41,6 +41,12 @@
         },
         {
           "name": "ZombieBoss"
+        },
+        {
+          "name": "ZombieFast"
+        },
+        {
+          "name": "ZombieTank"
         }
       ]
     },
@@ -88,16 +94,17 @@
       "value": 0
     },
     {
+      "folded": true,
       "name": "WaveEnemiesCount",
       "type": "array",
       "children": []
     },
     {
-      "folded": true,
       "name": "WaveData",
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "EnemiesCount",
           "type": "array",
           "children": [
@@ -131,7 +138,8 @@
       "value": 0
     },
     {
-      "name": "EnemyTypeList",
+      "folded": true,
+      "name": "EnemyTypeNameArray",
       "type": "array",
       "children": [
         {
@@ -144,9 +152,54 @@
         },
         {
           "type": "string",
+          "value": "ZombieFast"
+        },
+        {
+          "type": "string",
+          "value": "ZombieTank"
+        },
+        {
+          "type": "string",
           "value": "ZombieBoss"
         }
       ]
+    },
+    {
+      "folded": true,
+      "name": "EnemyWeightArray",
+      "type": "array",
+      "children": [
+        {
+          "type": "number",
+          "value": 10
+        },
+        {
+          "type": "number",
+          "value": 6
+        },
+        {
+          "type": "number",
+          "value": 4
+        },
+        {
+          "type": "number",
+          "value": 2
+        },
+        {
+          "type": "number",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "EnemyWeightPercentArray",
+      "type": "array",
+      "children": []
+    },
+    {
+      "name": "EnemyWeightTotal",
+      "type": "number",
+      "value": 0
     },
     {
       "name": "NextEnemyType",
@@ -159,31 +212,46 @@
       "value": 0
     },
     {
+      "name": "NextEnemyPercent",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "NextEnemyTypeArray",
+      "type": "array",
+      "children": []
+    },
+    {
       "folded": true,
-      "name": "PathPositions",
+      "name": "NextWavePreCal",
       "type": "structure",
       "children": [
         {
-          "name": "x",
+          "name": "EnemyCount",
           "type": "number",
           "value": 0
         },
         {
-          "name": "y",
+          "name": "EnemyTypeNumArray",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "RandomNumArray",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "WaveNumber",
           "type": "number",
           "value": 0
+        },
+        {
+          "name": "WaveSetDone",
+          "type": "boolean",
+          "value": false
         }
       ]
-    },
-    {
-      "name": "PathPositionX",
-      "type": "array",
-      "children": []
-    },
-    {
-      "name": "PathPositionY",
-      "type": "array",
-      "children": []
     },
     {
       "folded": true,
@@ -212,6 +280,16 @@
       "name": "PathPointsCount",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "childWeight",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "EnemiesCumlativePercent",
+      "type": "array",
+      "children": []
     }
   ],
   "instances": [
@@ -232,7 +310,7 @@
       "stringProperties": [
         {
           "name": "tilemap",
-          "value": "{\"tileWidth\":64,\"tileHeight\":64,\"dimX\":20,\"dimY\":12,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[70,70,70,70,70,70,71,24,24,24,24,24,24,24,24,24,24,24,24,24],[93,93,93,93,93,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[116,116,116,116,73,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,95,70,70,70,70,70,70,70,70,70,70,70,70,24],[24,24,24,24,92,93,93,93,93,93,93,93,93,93,93,93,93,93,93,24],[24,24,24,24,115,116,116,116,116,116,116,116,116,116,116,116,116,116,116,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24]]}]}"
+          "value": "{\"tileWidth\":64,\"tileHeight\":64,\"dimX\":20,\"dimY\":12,\"layers\":[{\"id\":0,\"alpha\":1,\"tiles\":[[70,70,70,70,70,70,71,24,24,24,24,24,24,24,24,24,24,24,24,24],[93,93,93,93,93,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[116,116,116,116,73,93,94,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,69,70,70,70,70,71,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,92,93,93,93,93,94,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,92,93,72,73,93,94,24,24,24,24,24,24,24],[24,24,24,24,92,93,94,92,93,94,92,93,95,70,70,70,70,70,70,24],[24,24,24,24,92,93,95,96,93,94,92,93,93,93,93,93,93,93,93,24],[24,24,24,24,92,93,93,93,93,94,115,116,116,116,116,116,116,116,116,24],[24,24,24,24,115,116,116,116,116,117,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24]]}]}"
         }
       ],
       "initialVariables": []
@@ -294,8 +372,8 @@
       "name": "PathMarker",
       "persistentUuid": "8be7fd27-2ace-471e-ba43-414c21fe8aad",
       "width": 0,
-      "x": 312,
-      "y": 55,
+      "x": 297,
+      "y": 62,
       "zOrder": 6,
       "numberProperties": [],
       "stringProperties": [],
@@ -310,8 +388,8 @@
       "name": "PathMarker",
       "persistentUuid": "f06ffdde-d772-4746-9d46-1f4712e8733e",
       "width": 0,
-      "x": 317,
-      "y": 383,
+      "x": 315,
+      "y": 507,
       "zOrder": 7,
       "numberProperties": [],
       "stringProperties": [],
@@ -332,8 +410,8 @@
       "name": "PathMarker",
       "persistentUuid": "7f0861f0-3ec0-477e-a7a4-787e9a538291",
       "width": 0,
-      "x": 1168,
-      "y": 374,
+      "x": 524,
+      "y": 511,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -399,7 +477,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "",
-      "name": "Tower1_Icon",
+      "name": "TowerGun_Icon",
       "persistentUuid": "4412bdf4-838d-4b76-a15b-b108bcb4698b",
       "width": 0,
       "x": 1186,
@@ -434,8 +512,8 @@
       "name": "Base",
       "persistentUuid": "9f731fab-a30b-48f8-b2b1-1f79d1ab1055",
       "width": 0,
-      "x": 1211,
-      "y": 392,
+      "x": 1229,
+      "y": 466,
       "zOrder": 16,
       "numberProperties": [],
       "stringProperties": [],
@@ -463,7 +541,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "",
-      "name": "Tower2_Icon",
+      "name": "TowerFlame_Icon",
       "persistentUuid": "61181073-c65d-4980-89d7-94b29aece38b",
       "width": 0,
       "x": 1188,
@@ -505,6 +583,110 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "DebugText",
+      "persistentUuid": "ec84beba-f8e8-4290-844f-406409e2a223",
+      "width": 0,
+      "x": 37,
+      "y": 229,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "c0cff941-5bf9-47dc-9d0b-c0c4b0277789",
+      "width": 0,
+      "x": 530,
+      "y": 261,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "d2f063e7-452a-48ab-847f-c2e8f745d3a8",
+      "width": 0,
+      "x": 727,
+      "y": 265,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "1b1cc48e-f45a-456d-adfd-b9302a7e39e8",
+      "width": 0,
+      "x": 734,
+      "y": 452,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathMarker",
+      "persistentUuid": "3329fada-aa2c-46cd-8d39-a784a301c25f",
+      "width": 0,
+      "x": 1159,
+      "y": 455,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "PathPointNumber",
+          "type": "number",
+          "value": 6
+        }
+      ]
     }
   ],
   "objects": [
@@ -549,6 +731,12 @@
           "name": "Gold",
           "type": "number",
           "value": 2
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 100
         }
       ],
       "effects": [],
@@ -1225,7 +1413,13 @@
       "name": "Indicator",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [],
+      "variables": [
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 20
+        }
+      ],
       "effects": [],
       "behaviors": [],
       "animations": [
@@ -1330,9 +1524,15 @@
     },
     {
       "assetStoreId": "",
-      "name": "Tower1_Icon",
+      "name": "TowerGun_Icon",
       "type": "PanelSpriteButton::PanelSpriteButton",
-      "variables": [],
+      "variables": [
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 300
+        }
+      ],
       "effects": [
         {
           "effectType": "Outline",
@@ -1456,6 +1656,12 @@
           "name": "Gold",
           "type": "number",
           "value": 3
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 100
         }
       ],
       "effects": [],
@@ -1774,42 +1980,42 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "assets\\TowerHead2",
+                  "image": "assets\\PixelArt64x64RedGun.png",
                   "points": [
                     {
                       "name": "BulletPoint",
-                      "x": 59,
-                      "y": 32
+                      "x": 58.5,
+                      "y": 33
                     }
                   ],
                   "originPoint": {
                     "name": "origine",
-                    "x": 32,
-                    "y": 32
+                    "x": 14.5,
+                    "y": 33.5
                   },
                   "centerPoint": {
                     "automatic": false,
                     "name": "centre",
-                    "x": 32,
-                    "y": 32
+                    "x": 14.5,
+                    "y": 33.5
                   },
                   "customCollisionMask": [
                     [
                       {
                         "x": 4,
-                        "y": 11
+                        "y": 19
                       },
                       {
                         "x": 59,
-                        "y": 11
+                        "y": 19
                       },
                       {
                         "x": 59,
-                        "y": 53
+                        "y": 47
                       },
                       {
                         "x": 4,
-                        "y": 53
+                        "y": 47
                       }
                     ]
                   ]
@@ -1822,9 +2028,15 @@
     },
     {
       "assetStoreId": "",
-      "name": "Tower2_Icon",
+      "name": "TowerFlame_Icon",
       "type": "PanelSpriteButton::PanelSpriteButton",
-      "variables": [],
+      "variables": [
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 150
+        }
+      ],
       "effects": [
         {
           "effectType": "Outline",
@@ -2143,6 +2355,12 @@
           "name": "Gold",
           "type": "number",
           "value": 3
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 100
         }
       ],
       "effects": [],
@@ -2237,6 +2455,418 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "DebugText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "",
+      "font": "",
+      "textAlignment": "left",
+      "characterSize": 32,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "",
+        "font": "",
+        "textAlignment": "left",
+        "verticalTextAlignment": "top",
+        "characterSize": 32,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerHeadDuelBarrel",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Cost",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 150
+        },
+        {
+          "name": "ProjectileSpeed",
+          "type": "number",
+          "value": 300
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 0.5
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FireBullet",
+          "type": "FireBullet::FireBullet",
+          "FireCooldown": 0.1,
+          "HasJustFired": false,
+          "RotateBullet": true,
+          "FiringArc": 45,
+          "BulletQuantity": 1,
+          "AngleVariance": 0,
+          "BulletSpeedVariance": 0,
+          "AmmoQuantity": 0,
+          "ShotsPerReload": 0,
+          "ReloadDuration": 1,
+          "MaxAmmo": 0,
+          "ShotsBeforeNextReload": 0,
+          "TotalShotsFired": 0,
+          "TotalBulletsCreated": 0,
+          "StartingAmmo": 0,
+          "TotalReloadsCompleted": 0,
+          "UnlimitedAmmo": true,
+          "ReloadInProgress": false,
+          "HeatIncreasePerShot": 0,
+          "HeatLevel": 0,
+          "AutomaticReloading": true,
+          "OverheatDuration": 0,
+          "LinearCoolingRate": 0.1,
+          "ExponentialCoolingRate": 0.3,
+          "BulletLayer": "",
+          "RandomizedAngle": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\TowerHead2",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "Ezekeil_PixelArtA3.png",
+                  "points": [
+                    {
+                      "name": "BulletPoint",
+                      "x": 64,
+                      "y": 24.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 29,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 29,
+                    "y": 32
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 19
+                      },
+                      {
+                        "x": 64,
+                        "y": 19
+                      },
+                      {
+                        "x": 64,
+                        "y": 44
+                      },
+                      {
+                        "x": 0,
+                        "y": 44
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieFast",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 150
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 12,
+          "CurrentHealth": 0,
+          "MaxHealth": 12,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy1.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieTank",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 50
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 24,
+          "CurrentHealth": 0,
+          "MaxHealth": 24,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy1.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -2246,16 +2876,19 @@
         "objectName": "TowerDefenseTileMap"
       },
       {
-        "objectName": "Tower1_Icon"
+        "objectName": "TowerGun_Icon"
       },
       {
-        "objectName": "Tower2_Icon"
+        "objectName": "TowerFlame_Icon"
       },
       {
         "objectName": "TowerHeadGun"
       },
       {
         "objectName": "TowerHeadFlame"
+      },
+      {
+        "objectName": "TowerHeadDuelBarrel"
       },
       {
         "objectName": "Indicator"
@@ -2274,6 +2907,12 @@
       },
       {
         "objectName": "ZombieBasic"
+      },
+      {
+        "objectName": "ZombieTank"
+      },
+      {
+        "objectName": "ZombieFast"
       },
       {
         "objectName": "ZombieTough"
@@ -2304,6 +2943,9 @@
       },
       {
         "objectName": "SpawnCountText"
+      },
+      {
+        "objectName": "DebugText"
       },
       {
         "objectName": "BaseBarText"
@@ -2453,16 +3095,6 @@
         },
         {
           "type": {
-            "value": "SetStringVariable"
-          },
-          "parameters": [
-            "NextEnemyType",
-            "=",
-            "\"ZombieTough\""
-          ]
-        },
-        {
-          "type": {
             "value": "OpacityCapability::OpacityBehavior::SetValue"
           },
           "parameters": [
@@ -2480,6 +3112,390 @@
             "Gold",
             "=",
             "50"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Enemy Random Level Calculations"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "EnemyWeightTotal",
+                "=",
+                "0"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEachChildVariable",
+          "iterableVariableName": "EnemyWeightArray",
+          "valueIteratorVariableName": "childWeight",
+          "keyIteratorVariableName": "",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "EnemyWeightTotal",
+                "+",
+                "childWeight"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEachChildVariable",
+          "iterableVariableName": "EnemyWeightArray",
+          "valueIteratorVariableName": "childWeight",
+          "keyIteratorVariableName": "",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "PushNumber"
+              },
+              "parameters": [
+                "EnemyWeightPercentArray",
+                "childWeight/EnemyWeightTotal*100"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Repeat",
+              "repeatExpression": "VariableChildCount(EnemyWeightPercentArray)",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "i",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PushNumber"
+                      },
+                      "parameters": [
+                        "EnemiesCumlativePercent",
+                        "EnemyWeightPercentArray[i]"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "i",
+                        ">",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PushNumber"
+                      },
+                      "parameters": [
+                        "EnemiesCumlativePercent",
+                        "EnemyWeightPercentArray[i]+EnemiesCumlativePercent[i-1]"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "i",
+                        "+",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "i",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 109,
+        "g": 230,
+        "r": 255,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Next Wave Pre Calculations for Enemies"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BooleanVariable"
+          },
+          "parameters": [
+            "NextWavePreCal.WaveSetDone",
+            "False",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "NextWavePreCal.WaveNumber",
+            "=",
+            "WaveNumber + 1"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "NextWavePreCal.EnemyCount",
+            "=",
+            "WaveData.EnemiesCount[NextWavePreCal.WaveNumber]"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Repeat for each enemy"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Repeat",
+              "repeatExpression": "NextWavePreCal.EnemyCount",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NextWavePreCal.RandomNumArray[k]",
+                    "=",
+                    "RandomInRange(0, 100)"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Repeat",
+                          "repeatExpression": "VariableChildCount(EnemiesCumlativePercent)",
+                          "conditions": [],
+                          "actions": [],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "NumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NextWavePreCal.RandomNumArray[k]",
+                                    "<=",
+                                    "EnemiesCumlativePercent[j]"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "enemy_type_set",
+                                    "=",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NextWavePreCal.EnemyTypeNumArray[k]",
+                                    "=",
+                                    "j"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetBooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "enemy_type_set",
+                                    "True",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "j",
+                                    "+",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "j",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "enemy_type_set",
+                      "type": "boolean",
+                      "value": false
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "k",
+                        "+",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "k",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "NextWavePreCal.WaveSetDone",
+                "True",
+                "1"
+              ]
+            }
           ]
         }
       ]
@@ -2553,6 +3569,157 @@
             "",
             "\"SpawnTimer\""
           ]
+        },
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "DebugText",
+            "Text",
+            "=",
+            "\" \""
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Enemy Random Type"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Repeat",
+          "repeatExpression": "CurrentSpawnCnt",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NextEnemyPercent",
+                "=",
+                "RandomInRange(0, 100)"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Repeat",
+                      "repeatExpression": "VariableChildCount(EnemiesCumlativePercent)",
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "NextEnemyPercent",
+                                "<=",
+                                "EnemiesCumlativePercent[j]"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "enemy_type_set",
+                                "=",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "NextEnemyNumber",
+                                "=",
+                                "j"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "enemy_type_set",
+                                "True",
+                                "1"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetStringVariable"
+                              },
+                              "parameters": [
+                                "NextEnemyType",
+                                "=",
+                                "EnemyTypeNameArray[NextEnemyNumber]"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PushNumber"
+                              },
+                              "parameters": [
+                                "NextEnemyTypeArray",
+                                "NextEnemyNumber"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "j",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "enemy_type_set",
+                  "type": "boolean",
+                  "value": false
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2596,41 +3763,12 @@
       "actions": [
         {
           "type": {
-            "value": "ResetTimer"
-          },
-          "parameters": [
-            "",
-            "\"SpawnTimer\""
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "NextEnemyNumber",
-            "=",
-            "RandomInRange(0, 2)"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetStringVariable"
-          },
-          "parameters": [
-            "NextEnemyType",
-            "=",
-            "EnemyTypeList[NextEnemyNumber]"
-          ]
-        },
-        {
-          "type": {
             "value": "CreateByName"
           },
           "parameters": [
             "",
             "Enemy",
-            "NextEnemyType",
+            "EnemyTypeNameArray[NextWavePreCal.EnemyTypeNumArray[CurrentSpawnCnt]]",
             "SpawnMarker.X()",
             "SpawnMarker.Y()",
             ""
@@ -2645,9 +3783,61 @@
             "-",
             "1"
           ]
+        },
+        {
+          "type": {
+            "value": "ResetTimer"
+          },
+          "parameters": [
+            "",
+            "\"SpawnTimer\""
+          ]
         }
       ],
       "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "CurrentSpawnCnt",
+                "=",
+                "0"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "NextWavePreCal.WaveSetDone",
+                "False",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "DebugText",
+                "Text",
+                "=",
+                "\"Wave End\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        },
         {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
@@ -2685,22 +3875,6 @@
                 "PathMarker.Y()"
               ]
             }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
-        {
-          "type": {
-            "value": "SetStringVariable"
-          },
-          "parameters": [
-            "NextEnemyType",
-            "=",
-            "\"ZombieTough\""
           ]
         }
       ]
@@ -2760,7 +3934,7 @@
                 "Enemy.TargetX[0]",
                 "Enemy.TargetY[0]",
                 "\"linear\"",
-                "DistanceBetweenPositions(Enemy.X(), Enemy.Y(), Enemy.TargetX[0], Enemy.TargetY[0]) * 0.02",
+                "DistanceBetweenPositions(Enemy.X(), Enemy.Y(), Enemy.TargetX[0], Enemy.TargetY[0]) * 1/Enemy.Speed",
                 "no"
               ]
             },
@@ -2906,7 +4080,7 @@
                 "value": "SourisSurObjet"
               },
               "parameters": [
-                "Tower1_Icon",
+                "TowerGun_Icon",
                 "",
                 "",
                 ""
@@ -2933,6 +4107,17 @@
                 "=",
                 "\"TowerGun\""
               ]
+            },
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Indicator",
+                "Range",
+                "=",
+                "TowerGun_Icon.Range"
+              ]
             }
           ]
         },
@@ -2944,7 +4129,7 @@
                 "value": "SourisSurObjet"
               },
               "parameters": [
-                "Tower2_Icon",
+                "TowerFlame_Icon",
                 "",
                 "",
                 ""
@@ -2970,6 +4155,17 @@
                 "Animation",
                 "=",
                 "\"TowerFlame\""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Indicator",
+                "Range",
+                "=",
+                "TowerFlame_Icon.Range"
               ]
             }
           ]
@@ -3111,7 +4307,7 @@
             "Range",
             "Indicator.X()",
             "Indicator.Y()",
-            "TowersPlaced.Range"
+            "Indicator.Range"
           ]
         }
       ]
@@ -3179,7 +4375,7 @@
             "value": "SourisSurObjet"
           },
           "parameters": [
-            "Tower1_Icon",
+            "TowerGun_Icon",
             "=",
             "",
             ""
@@ -3191,7 +4387,7 @@
             "value": "SourisSurObjet"
           },
           "parameters": [
-            "Tower2_Icon",
+            "TowerFlame_Icon",
             "=",
             "",
             ""

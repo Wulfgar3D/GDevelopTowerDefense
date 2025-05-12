@@ -326,6 +326,38 @@
         "name": "assets\\Enemy4",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "file": "assets/PixelArt64x64RedGun.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\PixelArt64x64RedGun.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "Ezekeil_PixelArtA.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Ezekeil_PixelArtA.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "Ezekeil_PixelArtA2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Ezekeil_PixelArtA2.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "Ezekeil_PixelArtA3.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Ezekeil_PixelArtA3.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -345,6 +377,11 @@
       "name": "Debug",
       "type": "boolean",
       "value": true
+    },
+    {
+      "name": "RandomNum",
+      "type": "number",
+      "value": 0
     }
   ],
   "layouts": [
