@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 228,
+    "build": 231,
     "major": 5,
     "minor": 5,
     "revision": 0
@@ -358,15 +358,2094 @@
         "name": "Ezekeil_PixelArtA3.png",
         "smoothed": true,
         "userAdded": false
+      },
+      {
+        "file": "towerDefense_tile262.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "towerDefense_tile262.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "towerDefense_tile024.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "towerDefense_tile024.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "towerDefense_tile050.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "towerDefense_tile050.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/assets_Enemy3.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\assets_Enemy3.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
   },
-  "objects": [],
+  "objects": [
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerHeadGun",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Cost",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 300
+        },
+        {
+          "name": "ProjectileSpeed",
+          "type": "number",
+          "value": 500
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 1
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FireBullet",
+          "type": "FireBullet::FireBullet",
+          "FireCooldown": 0.5,
+          "HasJustFired": false,
+          "RotateBullet": true,
+          "FiringArc": 45,
+          "BulletQuantity": 1,
+          "AngleVariance": 0,
+          "BulletSpeedVariance": 0,
+          "AmmoQuantity": 0,
+          "ShotsPerReload": 0,
+          "ReloadDuration": 1,
+          "MaxAmmo": 0,
+          "ShotsBeforeNextReload": 0,
+          "TotalShotsFired": 0,
+          "TotalBulletsCreated": 0,
+          "StartingAmmo": 0,
+          "TotalReloadsCompleted": 0,
+          "UnlimitedAmmo": true,
+          "ReloadInProgress": false,
+          "HeatIncreasePerShot": 0,
+          "HeatLevel": 0,
+          "AutomaticReloading": true,
+          "OverheatDuration": 0,
+          "LinearCoolingRate": 0.1,
+          "ExponentialCoolingRate": 0.3,
+          "BulletLayer": "",
+          "RandomizedAngle": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\TowerHead1",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\TowerHead1.png",
+                  "points": [
+                    {
+                      "name": "BulletPoint",
+                      "x": 59,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 11
+                      },
+                      {
+                        "x": 59,
+                        "y": 11
+                      },
+                      {
+                        "x": 59,
+                        "y": 53
+                      },
+                      {
+                        "x": 4,
+                        "y": 53
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerHeadFlame",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Cost",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 150
+        },
+        {
+          "name": "ProjectileSpeed",
+          "type": "number",
+          "value": 300
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 0.5
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FireBullet",
+          "type": "FireBullet::FireBullet",
+          "FireCooldown": 0.1,
+          "HasJustFired": false,
+          "RotateBullet": true,
+          "FiringArc": 45,
+          "BulletQuantity": 1,
+          "AngleVariance": 0,
+          "BulletSpeedVariance": 0,
+          "AmmoQuantity": 0,
+          "ShotsPerReload": 0,
+          "ReloadDuration": 1,
+          "MaxAmmo": 0,
+          "ShotsBeforeNextReload": 0,
+          "TotalShotsFired": 0,
+          "TotalBulletsCreated": 0,
+          "StartingAmmo": 0,
+          "TotalReloadsCompleted": 0,
+          "UnlimitedAmmo": true,
+          "ReloadInProgress": false,
+          "HeatIncreasePerShot": 0,
+          "HeatLevel": 0,
+          "AutomaticReloading": true,
+          "OverheatDuration": 0,
+          "LinearCoolingRate": 0.1,
+          "ExponentialCoolingRate": 0.3,
+          "BulletLayer": "",
+          "RandomizedAngle": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\TowerHead2",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\PixelArt64x64RedGun.png",
+                  "points": [
+                    {
+                      "name": "BulletPoint",
+                      "x": 58.5,
+                      "y": 33
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 14.5,
+                    "y": 33.5
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 14.5,
+                    "y": 33.5
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 19
+                      },
+                      {
+                        "x": 59,
+                        "y": 19
+                      },
+                      {
+                        "x": 59,
+                        "y": 47
+                      },
+                      {
+                        "x": 4,
+                        "y": 47
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "TowerGun_Icon",
+      "type": "PanelSpriteButton::PanelSpriteButton",
+      "variant": "",
+      "variables": [
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 300
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Black",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "0;0;5"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Outline",
+          "name": "White",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "255;255;255"
+          },
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [],
+      "content": {},
+      "childrenContent": {
+        "Hovered": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower1Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Idle": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower1Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "",
+          "font": "",
+          "textAlignment": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "",
+            "font": "",
+            "textAlignment": "",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "color": "0;0;0"
+          }
+        },
+        "Pressed": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower1Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        }
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "TowerFlame_Icon",
+      "type": "PanelSpriteButton::PanelSpriteButton",
+      "variant": "",
+      "variables": [
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 150
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Black",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "0;0;5"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Outline",
+          "name": "White",
+          "doubleParameters": {
+            "padding": 5,
+            "thickness": 5
+          },
+          "stringParameters": {
+            "color": "255;255;255"
+          },
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [],
+      "content": {},
+      "childrenContent": {
+        "Hovered": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower2Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Idle": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower2Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "",
+          "font": "",
+          "textAlignment": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "",
+            "font": "",
+            "textAlignment": "",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "color": "0;0;0"
+          }
+        },
+        "Pressed": {
+          "bottomMargin": 0,
+          "height": 64,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "assets\\Tower2Icon.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 64
+        }
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerBase",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\TowerBase.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Base",
+      "preScale": 2,
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Base.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 6
+                      },
+                      {
+                        "x": 58,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TowerHeadDuelBarrel",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Cost",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 400
+        },
+        {
+          "name": "ProjectileSpeed",
+          "type": "number",
+          "value": 200
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 0.5
+        },
+        {
+          "name": "Barrel",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "fired",
+          "type": "boolean",
+          "value": false
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FireBullet",
+          "type": "FireBullet::FireBullet",
+          "FireCooldown": 0.1,
+          "HasJustFired": false,
+          "RotateBullet": true,
+          "FiringArc": 45,
+          "BulletQuantity": 1,
+          "AngleVariance": 0,
+          "BulletSpeedVariance": 0,
+          "AmmoQuantity": 0,
+          "ShotsPerReload": 0,
+          "ReloadDuration": 1,
+          "MaxAmmo": 0,
+          "ShotsBeforeNextReload": 0,
+          "TotalShotsFired": 0,
+          "TotalBulletsCreated": 0,
+          "StartingAmmo": 0,
+          "TotalReloadsCompleted": 0,
+          "UnlimitedAmmo": true,
+          "ReloadInProgress": false,
+          "HeatIncreasePerShot": 0,
+          "HeatLevel": 0,
+          "AutomaticReloading": true,
+          "OverheatDuration": 0,
+          "LinearCoolingRate": 0.1,
+          "ExponentialCoolingRate": 0.3,
+          "BulletLayer": "",
+          "RandomizedAngle": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\TowerHead2",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "Ezekeil_PixelArtA3.png",
+                  "points": [
+                    {
+                      "name": "BulletPoint1",
+                      "x": 64,
+                      "y": 24.5
+                    },
+                    {
+                      "name": "BulletPoint2",
+                      "x": 64,
+                      "y": 39
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 29,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 29,
+                    "y": 32
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 19
+                      },
+                      {
+                        "x": 64,
+                        "y": 19
+                      },
+                      {
+                        "x": 64,
+                        "y": 44
+                      },
+                      {
+                        "x": 0,
+                        "y": 44
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Bullet",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 500
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullet.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 24,
+                        "y": 24
+                      },
+                      {
+                        "x": 40,
+                        "y": 24
+                      },
+                      {
+                        "x": 40,
+                        "y": 40
+                      },
+                      {
+                        "x": 24,
+                        "y": 40
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Flame",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 250
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "assets\\Flame",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Flame.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 14,
+                        "y": 26
+                      },
+                      {
+                        "x": 51,
+                        "y": 26
+                      },
+                      {
+                        "x": 51,
+                        "y": 38
+                      },
+                      {
+                        "x": 14,
+                        "y": 38
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieBasic",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 100
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "isFolded": true,
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 12,
+          "CurrentHealth": 0,
+          "MaxHealth": 12,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "NavMeshPathfindingBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingBehavior",
+          "Acceleration": 400,
+          "MaxSpeed": 200,
+          "AngularMaxSpeed": 180,
+          "RotateObject": false,
+          "AngleOffset": 0,
+          "CollisionShape": "Bounding disk",
+          "ExtraBorder": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy1.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "TowerDefenseTileMap",
+      "type": "TileMap::SimpleTileMap",
+      "variables": [
+        {
+          "name": "buildable",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "atlasImage": "assets\\towerDefense_tilesheet.png",
+        "rowCount": 13,
+        "columnCount": 23,
+        "tileSize": 64,
+        "tilesWithHitBox": "93,249,296,297,277,278,279,280,281,287,288,289,290,291,292,46"
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieTank",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 50
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 24,
+          "CurrentHealth": 0,
+          "MaxHealth": 24,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy1.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieFast",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Speed",
+          "type": "number",
+          "value": 150
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 12,
+          "CurrentHealth": 0,
+          "MaxHealth": 12,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy1.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieTough",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 100
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 20,
+          "CurrentHealth": 0,
+          "MaxHealth": 20,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 0,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 0,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0.25
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy2.png",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ZombieBoss",
+      "preScale": 1.5,
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Count",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "TargetX",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "TargetY",
+          "type": "array",
+          "children": []
+        },
+        {
+          "name": "Gold",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Speed",
+          "persistentUuid": "ff50c0e3-39aa-4ada-aa22-453ace7e3d38",
+          "type": "number",
+          "value": 100
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Health",
+          "type": "Health::Health",
+          "Health": 30,
+          "CurrentHealth": 0,
+          "MaxHealth": 30,
+          "DamageCooldown": 0,
+          "AllowOverHealing": false,
+          "IsHealthJustDamaged": false,
+          "DamageToBeApplied": 0,
+          "HitAtLeastOnce": false,
+          "ChanceToDodge": 0,
+          "IsJustDodged": false,
+          "HealToBeApplied": 0,
+          "HealthRegenRate": 0,
+          "HealthRegenDelay": 0,
+          "IsJustHealed": false,
+          "CurrentShieldPoints": 2.0247e-320,
+          "MaxShieldPoints": 2,
+          "ShieldDuration": 5,
+          "ShieldRegenRate": 0.5,
+          "BlockExcessDamage": false,
+          "ShieldRegenDelay": 5,
+          "IsShieldJustDamaged": false,
+          "ShieldDamageTaken": 2.0247e-320,
+          "FlatDamageReduction": 0,
+          "PercentDamageReduction": 0.25
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "assets\\Enemy3",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemy4",
+                  "points": [
+                    {
+                      "name": "ShotPoint",
+                      "x": 48,
+                      "y": 32
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 23,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 18
+                      },
+                      {
+                        "x": 41,
+                        "y": 46
+                      },
+                      {
+                        "x": 23,
+                        "y": 46
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "b44dba91245ff1ac84a7b450e078194f19321d135fd8a67cd19bc9cb3403fba5",
+      "name": "NextWaveButton",
+      "type": "PanelSpriteButton::PanelSpriteButton",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "LeftPadding": 16,
+        "RightPadding": 16,
+        "PressedLabelOffsetY": 10,
+        "BottomPadding": 32,
+        "TopPadding": 16,
+        "HoveredFadeOutDuration": 0.25
+      },
+      "childrenContent": {
+        "Hovered": {
+          "bottomMargin": 32,
+          "height": 106,
+          "leftMargin": 16,
+          "rightMargin": 16,
+          "texture": "Green Button_Hovered.png",
+          "tiled": false,
+          "topMargin": 16,
+          "width": 256
+        },
+        "Idle": {
+          "bottomMargin": 32,
+          "height": 106,
+          "leftMargin": 16,
+          "rightMargin": 16,
+          "texture": "Green Button_Idle.png",
+          "tiled": false,
+          "topMargin": 16,
+          "width": 256
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "Release the Zombies",
+          "font": "",
+          "textAlignment": "center",
+          "characterSize": 32,
+          "color": {
+            "b": 29,
+            "g": 99,
+            "r": 62
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "Release the Zombies",
+            "font": "",
+            "textAlignment": "center",
+            "verticalTextAlignment": "top",
+            "characterSize": 32,
+            "color": "62;99;29"
+          }
+        },
+        "Pressed": {
+          "bottomMargin": 16,
+          "height": 106,
+          "leftMargin": 16,
+          "rightMargin": 16,
+          "texture": "Green Button_Pressed.png",
+          "tiled": false,
+          "topMargin": 32,
+          "width": 256
+        }
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "GoldText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Gold: 0",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Gold: 0",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "WaveText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Wave: 0",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 255,
+        "g": 255,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Wave: 0",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "255;255;255"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "Range",
+      "type": "PrimitiveDrawing::Drawer",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "fillOpacity": 50,
+      "outlineSize": 1,
+      "outlineOpacity": 50,
+      "absoluteCoordinates": true,
+      "clearBetweenFrames": true,
+      "antialiasing": "none",
+      "fillColor": {
+        "r": 212,
+        "g": 108,
+        "b": 108
+      },
+      "outlineColor": {
+        "r": 162,
+        "g": 15,
+        "b": 15
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Indicator",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Range",
+          "type": "number",
+          "value": 20
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "TowerGun",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Tower1Icon.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "TowerFlame",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\assets_Tower2Icon.png.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 32,
+                    "y": 32
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 6
+                      },
+                      {
+                        "x": 64,
+                        "y": 58
+                      },
+                      {
+                        "x": 6,
+                        "y": 58
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "ebc9bc64e9525d8e827938e246f37b4398590f18a3444735dc50edbea0317f03",
+      "name": "BaseHealthBar",
+      "type": "PanelSpriteContinuousBar::PanelSpriteContinuousBar",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "InitialValue": 10,
+        "MaxValue": 10,
+        "BarTopPadding": 8,
+        "BarRightPadding": 10,
+        "BarBottomPadding": 8,
+        "BarLeftPadding": 10,
+        "PreviousHighValueDuration": 0
+      },
+      "childrenContent": {
+        "Background": {
+          "bottomMargin": 8,
+          "height": 35,
+          "leftMargin": 10,
+          "rightMargin": 10,
+          "texture": "Wood Bar Border.png",
+          "tiled": true,
+          "topMargin": 8,
+          "width": 397
+        },
+        "Buffer": {
+          "bottomMargin": 0,
+          "height": 32,
+          "leftMargin": 0,
+          "rightMargin": 0,
+          "texture": "Shaded Blue Fill Bar.png",
+          "tiled": false,
+          "topMargin": 0,
+          "width": 32
+        },
+        "FillBar": {
+          "bottomMargin": 9,
+          "height": 19,
+          "leftMargin": 6,
+          "rightMargin": 6,
+          "texture": "Shaded Blue Fill Bar.png",
+          "tiled": false,
+          "topMargin": 9,
+          "width": 19
+        },
+        "Label": {
+          "bold": false,
+          "italic": false,
+          "smoothed": true,
+          "underlined": false,
+          "string": "8 / 16",
+          "font": "",
+          "textAlignment": "center",
+          "characterSize": 16,
+          "color": {
+            "b": 255,
+            "g": 255,
+            "r": 255
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": true,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "8 / 16",
+            "font": "",
+            "textAlignment": "center",
+            "verticalTextAlignment": "top",
+            "characterSize": 16,
+            "color": "255;255;255"
+          }
+        }
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "BaseBarText",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Base Health",
+      "font": "",
+      "textAlignment": "right",
+      "characterSize": 40,
+      "color": {
+        "b": 254,
+        "g": 19,
+        "r": 144
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Base Health",
+        "font": "",
+        "textAlignment": "right",
+        "verticalTextAlignment": "top",
+        "characterSize": 40,
+        "color": "144;19;254"
+      }
+    }
+  ],
   "objectsFolderStructure": {
-    "folderName": "__ROOT"
+    "folderName": "__ROOT",
+    "children": [
+      {
+        "objectName": "TowerHeadGun"
+      },
+      {
+        "objectName": "TowerHeadFlame"
+      },
+      {
+        "objectName": "TowerGun_Icon"
+      },
+      {
+        "objectName": "TowerFlame_Icon"
+      },
+      {
+        "objectName": "TowerBase"
+      },
+      {
+        "objectName": "Base"
+      },
+      {
+        "objectName": "TowerHeadDuelBarrel"
+      },
+      {
+        "objectName": "Bullet"
+      },
+      {
+        "objectName": "Flame"
+      },
+      {
+        "objectName": "ZombieBasic"
+      },
+      {
+        "objectName": "TowerDefenseTileMap"
+      },
+      {
+        "objectName": "ZombieTank"
+      },
+      {
+        "objectName": "ZombieFast"
+      },
+      {
+        "objectName": "ZombieTough"
+      },
+      {
+        "objectName": "ZombieBoss"
+      },
+      {
+        "objectName": "NextWaveButton"
+      },
+      {
+        "objectName": "GoldText"
+      },
+      {
+        "objectName": "WaveText"
+      },
+      {
+        "objectName": "Range"
+      },
+      {
+        "objectName": "Indicator"
+      },
+      {
+        "objectName": "BaseHealthBar"
+      },
+      {
+        "objectName": "BaseBarText"
+      }
+    ]
   },
-  "objectsGroups": [],
+  "objectsGroups": [
+    {
+      "name": "Enemy",
+      "objects": [
+        {
+          "name": "ZombieBasic"
+        },
+        {
+          "name": "ZombieTough"
+        },
+        {
+          "name": "ZombieBoss"
+        },
+        {
+          "name": "ZombieFast"
+        },
+        {
+          "name": "ZombieTank"
+        }
+      ]
+    },
+    {
+      "name": "TowersPlaced",
+      "objects": [
+        {
+          "name": "TowerHeadGun"
+        },
+        {
+          "name": "TowerHeadFlame"
+        },
+        {
+          "name": "TowerHeadDuelBarrel"
+        }
+      ]
+    }
+  ],
   "variables": [
     {
       "name": "Gold",
@@ -388,6 +2467,18 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/level1"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/testlevel"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/pathtest"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/level2"
     }
   ],
   "externalEvents": [],
@@ -411,6 +2502,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/panelspritecontinuousbar"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/navmeshpathfinding"
     }
   ],
   "externalLayouts": []
